@@ -1,0 +1,8 @@
+E:\ProJect\wpftemp\bin\x86\Debug\ViewModel.Base.dll.config
+E:\ProJect\wpftemp\bin\x86\Debug\ViewModel.Base.dll
+E:\ProJect\wpftemp\bin\x86\Debug\ViewModel.Base.pdb
+E:\ProJect\wpftemp\ViewModel.Base\obj\Debug\ViewModel.Base.csproj.AssemblyReference.cache
+E:\ProJect\wpftemp\ViewModel.Base\obj\Debug\ViewModel.Base.csproj.CoreCompileInputs.cache
+E:\ProJect\wpftemp\ViewModel.Base\obj\Debug\ViewModel.Base.csproj.CopyComplete
+E:\ProJect\wpftemp\ViewModel.Base\obj\Debug\ViewModel.Base.dll
+E:\ProJect\wpftemp\ViewModel.Base\obj\Debug\ViewModel.Base.pdb

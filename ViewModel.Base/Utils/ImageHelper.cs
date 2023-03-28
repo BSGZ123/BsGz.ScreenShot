@@ -8,7 +8,7 @@ namespace ViewModel.Base
         public static BitmapImage BitmapToBitmapImage(System.Drawing.Bitmap bitmap)
         {
             BitmapImage bitmapImage = new BitmapImage();
-            using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+            using (MemoryStream ms = new MemoryStream())
             {
                 bitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                 bitmapImage.BeginInit();
