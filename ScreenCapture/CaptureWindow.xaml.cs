@@ -150,8 +150,8 @@ namespace ScreenCapture
             };
         }
         public Bitmap GetScreenSnapshot()
-        {
-            System.Drawing.Rectangle rc = SystemInformation.VirtualScreen;
+        {   
+            Rectangle rc = SystemInformation.VirtualScreen;//获取虚拟屏幕的界限
             var bitmap = new Bitmap(rc.Width, rc.Height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
             using (Graphics memoryGrahics = Graphics.FromImage(bitmap))
             {
@@ -396,13 +396,17 @@ namespace ScreenCapture
 
         private BitmapSource GetCaptureSource()
         {
-            imageSourceBack.Visibility = Visibility.Visible;
+            imageSourceBack.Visibility = Visibility.Visible;//设为可见
+
+            //已经确定问题 DPI 96 对应windos 桌面设置为100%缩放
+            //使用控件的尺寸创建一个新的 RenderTargetBitmap 对象
             RenderTargetBitmap rtb = new RenderTargetBitmap((int)ActualWidth, (int)ActualHeight, 96, 96, PixelFormats.Default);
-            rtb.Render(imageSourceGrid);
-            BitmapImage image = ImageHelper.RenderTargetBitmapToBitmapImage(rtb);
+            rtb.Render(imageSourceGrid);//在其上呈现一个名为“imageSourceGrid”的图像元素
+            BitmapImage image = ImageHelper.RenderTargetBitmapToBitmapImage(rtb);//将生成的图像转换为 BitmapImage
+
             var rect = new Int32Rect((int)captureRect.X, (int)captureRect.Y, (int)captureRect.Width, (int)captureRect.Height);
             var stride = image.Format.BitsPerPixel * rect.Width / 8;
-            byte[] data = new byte[rect.Height * stride];
+            byte[] data = new byte[rect.Height * stride];//根据图像格式的每像素位数和矩形宽度计算图像矩形部分的步幅
             image.CopyPixels(rect, data, stride, 0);
             var res = BitmapSource.Create(rect.Width, rect.Height, 0, 0, PixelFormats.Bgr32, null, data, stride);
             return res;

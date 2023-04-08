@@ -55,19 +55,25 @@
         </Style>
     </Window.Resources>
     <Grid x:Name="Back">
-        <Image IsHitTestVisible="False" Source="{Binding FullScreenSource}" Stretch="None"/>
-        <Grid MouseDown="OnMouseDown" MouseUp="OnMouseUp" MouseMove="OnMouseMove" Background="#99000000"/>
-        <Image Source="{Binding FullScreenSource}" Stretch="None" IsHitTestVisible="False" RenderOptions.BitmapScalingMode="NearestNeighbor" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="83*"/>
+            <RowDefinition Height="83*"/>
+            <RowDefinition Height="74*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Image IsHitTestVisible="False" Source="{Binding FullScreenSource}" Stretch="None" Grid.RowSpan="4"/>
+        <Grid MouseDown="OnMouseDown" MouseUp="OnMouseUp" MouseMove="OnMouseMove" Background="#99000000" Grid.RowSpan="4"/>
+        <Image Source="{Binding FullScreenSource}" Stretch="None" IsHitTestVisible="False" RenderOptions.BitmapScalingMode="NearestNeighbor" Grid.RowSpan="4" >
             <Image.Clip>
                 <RectangleGeometry Rect="{Binding CaptureRect}"></RectangleGeometry>
             </Image.Clip>
         </Image>
-        <Grid x:Name="imageSourceGrid" IsHitTestVisible="False">
+        <Grid x:Name="imageSourceGrid" IsHitTestVisible="False" Grid.RowSpan="4">
             <Image x:Name="imageSourceBack" RenderOptions.BitmapScalingMode="NearestNeighbor"  Visibility="Hidden" IsHitTestVisible="False" Source="{Binding FullScreenSource}" Stretch="None"/>
             <InkCanvas Name="inkCanvasMeasure"  Background="Transparent" Strokes="{Binding InkStrokes}">
             </InkCanvas>
         </Grid>
-        <Canvas>
+        <Canvas Grid.RowSpan="4">
             <!--工具条-->
             <StackPanel Canvas.Left="{Binding ToolLeft}"
                         Canvas.Top="{Binding ToolTop}"
@@ -97,7 +103,7 @@
                         local:ButtonImageProperty.Value="{StaticResource ok}"/>
             </StackPanel>
         </Canvas>
-        <Canvas x:Name="ClipBorderCanvas" IsHitTestVisible="False">
+        <Canvas x:Name="ClipBorderCanvas" IsHitTestVisible="False" Grid.RowSpan="4">
             <!--边框-->
             <Border Style="{x:Null}" Cursor="SizeAll" Canvas.ZIndex="99"
                            Width="{Binding CaptureRect.Width}"
@@ -143,12 +149,12 @@
                        VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 -3 -3"/>
             </Grid>
         </Canvas>
-        <Canvas >
+        <Canvas Grid.RowSpan="4" >
             <local:TextBlockBox x:Name="input" 
                                 Visibility="Hidden" 
                                 />
         </Canvas>
 
-       
+
     </Grid>
 </Window>

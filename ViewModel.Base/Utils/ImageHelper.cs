@@ -5,6 +5,7 @@ namespace ViewModel.Base
 {
     public class ImageHelper
     {
+        //这里没有图片失真
         public static BitmapImage BitmapToBitmapImage(System.Drawing.Bitmap bitmap)
         {
             BitmapImage bitmapImage = new BitmapImage();
